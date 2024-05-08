@@ -15,14 +15,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposableTarget
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -75,6 +80,7 @@ class MainActivity : ComponentActivity() {
                         var persona by remember { mutableStateOf("") }
                         var observacion by remember { mutableStateOf("") }
                         var monto by remember { mutableStateOf(0.0 ) }
+                        var showDiagConfirm by remember { mutableStateOf(false) }
 
 
                         ElevatedCard(
@@ -90,7 +96,10 @@ class MainActivity : ComponentActivity() {
                                     label = { Text(text = "Persona") },
                                     value = persona,
                                     onValueChange = { persona = it },
-                                    modifier = Modifier.fillMaxWidth().size(80.dp).padding(8.dp),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .size(80.dp)
+                                        .padding(8.dp),
                                     keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next)
                                 )
 
@@ -102,14 +111,20 @@ class MainActivity : ComponentActivity() {
                                     }},
                                     keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
 
-                                    modifier = Modifier.fillMaxWidth().size(80.dp).padding(8.dp),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .size(80.dp)
+                                        .padding(8.dp),
                                 )
 
                                 OutlinedTextField(
                                     label = { Text(text = "Observacion") },
                                     value = observacion,
                                     onValueChange = { observacion = it },
-                                    modifier = Modifier.fillMaxWidth().size(120.dp).padding(8.dp),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .size(120.dp)
+                                        .padding(8.dp),
                                 )
 
                                 Spacer(modifier = Modifier.padding(2.dp))
@@ -149,43 +164,74 @@ class MainActivity : ComponentActivity() {
                                             observacion = ""
                                         }
                                     ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Edit,
-                                            contentDescription = "save button"
-                                        )
                                         if (aporteId.isNotEmpty()) {
+                                            Icon(
+                                                imageVector = Icons.Default.Edit,
+                                                contentDescription = "save button"
+                                            )
                                             Text(text = "Actualizar")
                                         } else {
+                                        Icon(
+                                            imageVector = Icons.Default.AddCircle,
+                                            contentDescription = "save button"
+                                        )
+
                                         Text(text = "Guardar")
-                                            }
+                                         }
                                     }
+
 
 
                                     if (aporteId.isNotEmpty()) {
-                                    OutlinedButton(
-                                        onClick = {
-                                            deleteAporte(
-                                                AporteEntity(
-                                                    aporteId = aporteId.toIntOrNull(),
-                                                    fecha = Date().toString(),
-                                                    persona = persona,
-                                                    monto = monto,
-                                                    observacion = observacion
-                                                )
+                                        OutlinedButton(
+                                            onClick = { showDiagConfirm = true }
+
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.Default.Delete,
+                                                contentDescription = "delete button"
                                             )
-                                            aporteId = ""
-                                            persona = ""
-                                            monto = 0.0
-                                            observacion = ""
+                                            Text(text = "Borrar")
                                         }
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Delete,
-                                            contentDescription = "delete button"
-                                        )
-                                        Text(text = "Borrar")
+                                        if (showDiagConfirm) {
+                                            AlertDialog(
+                                                onDismissRequest = { showDiagConfirm = false },
+                                                title = { Text("Confirmar eliminación") },
+                                                text = { Text("¿Está seguro de que desea eliminar este aporte?") },
+                                                confirmButton = {
+                                                    TextButton(
+                                                        onClick = {
+                                                            deleteAporte(
+                                                                AporteEntity(
+                                                                    aporteId = aporteId.toIntOrNull(),
+                                                                    fecha = Date().toString(),
+                                                                    persona = persona,
+                                                                    monto = monto,
+                                                                    observacion = observacion
+                                                                )
+                                                            )
+                                                            aporteId = ""
+                                                            persona = ""
+                                                            monto = 0.0
+                                                            observacion = ""
+                                                            showDiagConfirm = false
+                                                        }
+                                                    ) {
+                                                        Text("Sí")
+                                                    }
+                                                },
+                                                dismissButton = {
+                                                    TextButton(
+                                                        onClick = {
+                                                            showDiagConfirm = false
+                                                        }
+                                                    ) {
+                                                        Text("No")
+                                                    }
+                                                }
+                                            )
+                                        }
                                     }
-                                        }
                                 }
                             }
                         }
