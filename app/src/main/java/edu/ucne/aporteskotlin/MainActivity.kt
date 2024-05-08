@@ -26,8 +26,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ComposableTarget
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -80,7 +78,8 @@ class MainActivity : ComponentActivity() {
                         var persona by remember { mutableStateOf("") }
                         var observacion by remember { mutableStateOf("") }
                         var monto by remember { mutableStateOf(0.0 ) }
-                        var showDiagConfirm by remember { mutableStateOf(false) }
+                        var showDiagDeleteConfirm by remember { mutableStateOf(false) }
+                        var showDiagSaveError by remember { mutableStateOf(false) }
 
 
                         ElevatedCard(
@@ -118,7 +117,7 @@ class MainActivity : ComponentActivity() {
                                 )
 
                                 OutlinedTextField(
-                                    label = { Text(text = "Observacion") },
+                                    label = { Text(text = "Observación") },
                                     value = observacion,
                                     onValueChange = { observacion = it },
                                     modifier = Modifier
@@ -149,19 +148,27 @@ class MainActivity : ComponentActivity() {
                                     }
                                     OutlinedButton(
                                         onClick = {
-                                            saveAporte(
-                                                AporteEntity(
-                                                    aporteId = aporteId.toIntOrNull(),
-                                                    fecha = Date().toString(),
-                                                    persona = persona,
-                                                    monto = monto,
-                                                    observacion = observacion
+                                            if (validarGuardar(persona, monto)) {
+                                                if (observacion.isNullOrEmpty()) {
+                                                    observacion = "Sin Observación"
+                                                }
+                                                saveAporte(
+                                                    AporteEntity(
+                                                        aporteId = aporteId.toIntOrNull(),
+                                                        fecha = Date().toString(),
+                                                        persona = persona,
+                                                        monto = monto,
+                                                        observacion = observacion
+                                                    )
                                                 )
-                                            )
-                                            aporteId = ""
-                                            persona = ""
-                                            monto = 0.0
-                                            observacion = ""
+                                                aporteId = ""
+                                                persona = ""
+                                                monto = 0.0
+                                                observacion = ""
+                                            }
+                                            else {
+                                                showDiagSaveError = true
+                                            }
                                         }
                                     ) {
                                         if (aporteId.isNotEmpty()) {
@@ -180,11 +187,28 @@ class MainActivity : ComponentActivity() {
                                          }
                                     }
 
+                                    if (showDiagSaveError) {
+                                        AlertDialog(
+                                            onDismissRequest = { showDiagSaveError = false },
+                                            title = { Text("Error al guardar") },
+                                            text = { Text("Debe ingresar una persona y un monto mayor a 0") },
+                                            confirmButton = {
+                                                TextButton(
+                                                    onClick = {
+                                                        showDiagSaveError = false
+                                                    }
+                                                ) {
+                                                    Text("Aceptar")
+                                                }
+                                            }
+                                        )
+                                    }
+
 
 
                                     if (aporteId.isNotEmpty()) {
                                         OutlinedButton(
-                                            onClick = { showDiagConfirm = true }
+                                            onClick = { showDiagDeleteConfirm = true }
 
                                         ) {
                                             Icon(
@@ -193,9 +217,9 @@ class MainActivity : ComponentActivity() {
                                             )
                                             Text(text = "Borrar")
                                         }
-                                        if (showDiagConfirm) {
+                                        if (showDiagDeleteConfirm) {
                                             AlertDialog(
-                                                onDismissRequest = { showDiagConfirm = false },
+                                                onDismissRequest = { showDiagDeleteConfirm = false },
                                                 title = { Text("Confirmar eliminación") },
                                                 text = { Text("¿Está seguro de que desea eliminar este aporte?") },
                                                 confirmButton = {
@@ -214,7 +238,7 @@ class MainActivity : ComponentActivity() {
                                                             persona = ""
                                                             monto = 0.0
                                                             observacion = ""
-                                                            showDiagConfirm = false
+                                                            showDiagDeleteConfirm = false
                                                         }
                                                     ) {
                                                         Text("Sí")
@@ -223,7 +247,7 @@ class MainActivity : ComponentActivity() {
                                                 dismissButton = {
                                                     TextButton(
                                                         onClick = {
-                                                            showDiagConfirm = false
+                                                            showDiagDeleteConfirm = false
                                                         }
                                                     ) {
                                                         Text("No")
@@ -264,5 +288,9 @@ class MainActivity : ComponentActivity() {
         GlobalScope.launch {
             aporteDb.aporteDao().delete(aporte)
         }
+    }
+
+    fun validarGuardar(persona: String, monto: Double): Boolean {
+        return persona.isNotEmpty() && monto > 0
     }
 }
