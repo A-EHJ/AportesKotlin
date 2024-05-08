@@ -168,15 +168,16 @@ class MainActivity : ComponentActivity() {
                                                         observacion = observacion
                                                     )
                                                 )
-                                                aporteId = ""
-                                                persona = ""
-                                                monto = 0.0
-                                                observacion = ""
+
                                                 if (aporteId.isNotEmpty()) {
                                                     Toast.makeText(this@MainActivity, "Aporte actualizado", Toast.LENGTH_SHORT).show()
                                                 } else {
                                                     Toast.makeText(this@MainActivity, "Aporte guardado", Toast.LENGTH_SHORT).show()
                                                 }
+                                                aporteId = ""
+                                                persona = ""
+                                                monto = 0.0
+                                                observacion = ""
                                             }
                                             else {
                                                 showDiagSaveError = true

@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7651f4d-dd63-4c93-9c8c-5b303fa8eaab" name="Changes" comment="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista.">
+    <list default="true" id="d7651f4d-dd63-4c93-9c8c-5b303fa8eaab" name="Changes" comment="Agregando Toast (Notificaciones flyout abajo), para mejorar el sistema.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/MainActivity.kt" afterDir="false" />
     </list>
@@ -26,7 +26,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\AEHJ\.android\avd\Pixel_Fold_API_34.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R58MB30XMXF)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -82,25 +82,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.AportesKotlin.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;P:/Aplicada2/AportesKotlin&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.AportesKotlin.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ScreenshotViewer.SavePath": "P:/Aplicada2/Imag/Tarea1",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "P:/Aplicada2/Imag/Tarea1",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Signing Configs" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -223,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715144287799</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Agregando Toast (Notificaciones flyout abajo), para mejorar el sistema.">
+      <option name="closed" value="true" />
+      <created>1715146132808</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715146132808</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -236,6 +245,7 @@
     <MESSAGE value="Implementando codigo para que valide los campos persona y monto, Tambien cuando guarde el campo observación, si no tiene que le ponga sin observación." />
     <MESSAGE value="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
     <MESSAGE value="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
+    <MESSAGE value="Agregando Toast (Notificaciones flyout abajo), para mejorar el sistema." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregando Toast (Notificaciones flyout abajo), para mejorar el sistema." />
   </component>
 </project>
