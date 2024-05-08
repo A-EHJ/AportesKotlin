@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7651f4d-dd63-4c93-9c8c-5b303fa8eaab" name="Changes" comment="">
+    <list default="true" id="d7651f4d-dd63-4c93-9c8c-5b303fa8eaab" name="Changes" comment="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/presentation/AporteListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/presentation/AporteListScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,44 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AportesKotlin" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AportesKotlin" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AportesKotlin" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AportesKotlin" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -169,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715138008434</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implementando codigo para que valide los campos persona y monto, Tambien cuando guarde el campo observación, si no tiene que le ponga sin observación.">
+      <option name="closed" value="true" />
+      <created>1715139689075</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715139689075</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -179,6 +226,8 @@
     <MESSAGE value="Por razones magicas, se le quito el google.devtools.ksp, lo agrego nuevamente" />
     <MESSAGE value="sincronizando y haciendo pruebas, se agregaron estos archivos" />
     <MESSAGE value="Agregando al boton eliminar un alertdialog para confirmar su eliminación, tambien modificando el icono que aparece al guardar, para diferenciarlo del actualizar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregando al boton eliminar un alertdialog para confirmar su eliminación, tambien modificando el icono que aparece al guardar, para diferenciarlo del actualizar." />
+    <MESSAGE value="Implementando codigo para que valide los campos persona y monto, Tambien cuando guarde el campo observación, si no tiene que le ponga sin observación." />
+    <MESSAGE value="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
   </component>
 </project>

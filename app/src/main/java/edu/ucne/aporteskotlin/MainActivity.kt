@@ -16,6 +16,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
@@ -89,6 +90,7 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(8.dp)
+
                             ) {
 
                                 OutlinedTextField(
@@ -108,12 +110,13 @@ class MainActivity : ComponentActivity() {
                                     onValueChange = {if (it.matches(regex)) {
                                         monto = it.toDoubleOrNull() ?: 0.0
                                     }},
-                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
 
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .size(80.dp)
                                         .padding(8.dp),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+
                                 )
 
                                 OutlinedTextField(
@@ -124,6 +127,7 @@ class MainActivity : ComponentActivity() {
                                         .fillMaxWidth()
                                         .size(120.dp)
                                         .padding(8.dp),
+                                    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done)
                                 )
 
                                 Spacer(modifier = Modifier.padding(2.dp))
@@ -260,8 +264,66 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         Spacer(modifier = Modifier.padding(2.dp))
+                        var filtroId: Int by remember { mutableStateOf(0) }
+                        var filtroPersona: String by remember { mutableStateOf("") }
+                        var filtroObservacion: String by remember { mutableStateOf("") }
+
+                        Text(text = "Filtrar")
+                        Row {OutlinedTextField(
+                            label = { Text(text = "Id") },
+                            value = filtroId.toString(),
+                            onValueChange = {if (it.toIntOrNull() != null) {
+                                filtroId = it.toIntOrNull() ?: 0
+                            }},
+
+                            modifier = Modifier
+                                .size(150.dp, 80.dp)
+                                .padding(8.dp),
+                            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next)
+                        )
+
+                            OutlinedTextField(
+                                label = { Text(text = "Persona") },
+                                value = filtroPersona,
+                                onValueChange = { filtroPersona = it },
+                                modifier = Modifier
+                                    .size(200.dp, 80.dp)
+                                    .padding(8.dp),
+                                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next)
+                            )
+
+                            OutlinedTextField(
+                                label = { Text(text = "Observación") },
+                                value = filtroObservacion,
+                                onValueChange = { filtroObservacion = it },
+                                modifier = Modifier
+                                    .size(300.dp, 80.dp)
+                                    .padding(8.dp),
+                                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+                            )
+
+                        }
+
+                        Spacer(modifier = Modifier.padding(2.dp))
+
+                        OutlinedButton(
+                            onClick = {
+                                filtroId = 0
+                                filtroPersona = ""
+                                filtroObservacion = ""
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Clear,
+                                contentDescription = "new button"
+                            )
+                            Text(text = "Limpiar Filtros")
+                        }
 
                         AporteListScreen(
+                            filtroId = filtroId,
+                            filtroPersona = filtroPersona,
+                            filtroObservacion = filtroObservacion,
                             aportes = aportes,
                             onVerAporte = { aporteSeleccionado ->
                                 aporteId = aporteSeleccionado.aporteId.toString()

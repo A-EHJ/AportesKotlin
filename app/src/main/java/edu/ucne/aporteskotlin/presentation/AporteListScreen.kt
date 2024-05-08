@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.dp
 import edu.ucne.aporteskotlin.data.local.entitites.AporteEntity
 import java.text.SimpleDateFormat
@@ -21,6 +22,9 @@ import java.util.Date
 
 @Composable
 fun AporteListScreen(
+    filtroId: Int,
+    filtroPersona: String,
+    filtroObservacion: String,
     aportes: List<AporteEntity>,
     onVerAporte: (AporteEntity) -> Unit
 
@@ -38,7 +42,7 @@ fun AporteListScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.Gray)
+                        .background(Color(192, 190, 197))
                 ) {
                     Text(
                         text = "ID",
@@ -52,14 +56,14 @@ fun AporteListScreen(
                             .weight(0.40f)
                     )
                     Text(
-                        text = "Observa-\nción",
+                        text = "Observación",
                         modifier = Modifier
-                            .weight(0.30f)
+                            .weight(0.50f)
                     )
                     Text(
                         text = "Monto",
                         modifier = Modifier
-                            .weight(0.20f)
+                            .weight(0.30f)
                     )
                     Text(
                         text = "Fecha",
@@ -68,7 +72,8 @@ fun AporteListScreen(
                     )
                 }
             }
-            items(aportes) { aporte ->
+            var AportesFiltrados = aportes.filter {(it.aporteId == filtroId || filtroId == 0) && (it.observacion.toLowerCase().contains(filtroObservacion.toLowerCase())  || filtroObservacion == "") && (it.persona.toLowerCase().contains(filtroPersona.toLowerCase()) || filtroPersona == "") }
+            items(AportesFiltrados) { aporte ->
                 val fecha =  aporte.fecha.split(" ").take(4).joinToString(" ").split(":").take(2).joinToString(":")
                 val observacion = cortarCantidadCaracteres(aporte.observacion,25)
                 Row(
