@@ -1,6 +1,7 @@
 package edu.ucne.aporteskotlin
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -142,6 +144,7 @@ class MainActivity : ComponentActivity() {
                                             persona = ""
                                             monto = 0.0
                                             observacion = ""
+                                            Toast.makeText(this@MainActivity, "Nuevo aporte", Toast.LENGTH_SHORT).show()
                                         }
                                     ) {
                                         Icon(
@@ -169,6 +172,11 @@ class MainActivity : ComponentActivity() {
                                                 persona = ""
                                                 monto = 0.0
                                                 observacion = ""
+                                                if (aporteId.isNotEmpty()) {
+                                                    Toast.makeText(this@MainActivity, "Aporte actualizado", Toast.LENGTH_SHORT).show()
+                                                } else {
+                                                    Toast.makeText(this@MainActivity, "Aporte guardado", Toast.LENGTH_SHORT).show()
+                                                }
                                             }
                                             else {
                                                 showDiagSaveError = true
@@ -224,7 +232,12 @@ class MainActivity : ComponentActivity() {
                                         if (showDiagDeleteConfirm) {
                                             AlertDialog(
                                                 onDismissRequest = { showDiagDeleteConfirm = false },
-                                                title = { Text("Confirmar eliminación") },
+                                                title = {
+                                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                                        Icon(imageVector = Icons.Default.Delete, contentDescription = null)
+                                                        Text("Confirmar eliminación")
+                                                    }
+                                                },
                                                 text = { Text("¿Está seguro de que desea eliminar este aporte?") },
                                                 confirmButton = {
                                                     TextButton(
@@ -243,6 +256,7 @@ class MainActivity : ComponentActivity() {
                                                             monto = 0.0
                                                             observacion = ""
                                                             showDiagDeleteConfirm = false
+                                                            Toast.makeText(this@MainActivity, "Aporte eliminado", Toast.LENGTH_SHORT).show()
                                                         }
                                                     ) {
                                                         Text("Sí")
@@ -311,6 +325,7 @@ class MainActivity : ComponentActivity() {
                                 filtroId = 0
                                 filtroPersona = ""
                                 filtroObservacion = ""
+                                Toast.makeText(this@MainActivity, "Filtros Limpiados", Toast.LENGTH_SHORT).show()
                             }
                         ) {
                             Icon(

@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7651f4d-dd63-4c93-9c8c-5b303fa8eaab" name="Changes" comment="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista.">
+    <list default="true" id="d7651f4d-dd63-4c93-9c8c-5b303fa8eaab" name="Changes" comment="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/presentation/AporteListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucne/aporteskotlin/presentation/AporteListScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715139689075</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista.">
+      <option name="closed" value="true" />
+      <created>1715144287799</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715144287799</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -228,6 +235,7 @@
     <MESSAGE value="Agregando al boton eliminar un alertdialog para confirmar su eliminación, tambien modificando el icono que aparece al guardar, para diferenciarlo del actualizar." />
     <MESSAGE value="Implementando codigo para que valide los campos persona y monto, Tambien cuando guarde el campo observación, si no tiene que le ponga sin observación." />
     <MESSAGE value="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregando filtros para el buscar.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
+    <MESSAGE value="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregando filtros para las tablas.&#10;&#10;Nota, trate de usar el scroll view de jetpack compose, pero daba conflicto con el lazycolumn ya que ambos eran un scroll y no me dejaba, busque algunas maneras y tampoco, en este caso simplemente deje el lazy column y reorganicé los filtros para que todo quepa a la vista." />
   </component>
 </project>
